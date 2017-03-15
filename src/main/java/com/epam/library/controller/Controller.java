@@ -2,7 +2,7 @@ package com.epam.library.controller;
 
 import com.epam.library.command.Command;
 import com.epam.library.command.ExitCommand;
-import com.epam.library.database.ConnectionPool;
+import com.epam.library.database.ConnectionWrapper;
 import com.epam.library.factory.ActionFactory;
 
 import java.util.Scanner;
@@ -32,7 +32,7 @@ public class Controller {
                 }
             }
         } finally {
-            ConnectionPool.getInstance().closeConnection();
+            ConnectionWrapper.getInstance().closeConnection();
         }
     }
 

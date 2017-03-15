@@ -1,13 +1,13 @@
 package com.epam.library.service;
 
 import com.epam.library.dao.BookDAO;
-import com.epam.library.database.ConnectionPool;
+import com.epam.library.database.ConnectionWrapper;
 import com.epam.library.entity.Book;
 import com.epam.library.exception.DAOException;
 import com.epam.library.exception.ServiceException;
 
 public class BookService extends AbstractService<Book> {
-    private BookDAO bookDAO = new BookDAO(ConnectionPool.getInstance().getConnection());
+    private BookDAO bookDAO = new BookDAO(ConnectionWrapper.getInstance().getConnection());
 
     public Book create(Book book) throws ServiceException {
         try {

@@ -9,10 +9,10 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
-public class ConnectionPool {
+public class ConnectionWrapper {
     private static final Logger logger = LogManager.getLogger();
 
-    private static ConnectionPool instance;
+    private static ConnectionWrapper instance;
     private Connection connection;
 
     private static final String DATABASE = "db";
@@ -20,13 +20,13 @@ public class ConnectionPool {
     private static final String DB_USER = "db.user";
     private static final String DB_PASSWORD = "db.password";
 
-    private ConnectionPool() {
+    private ConnectionWrapper() {
         connection = getDatabaseConnection();
     }
 
-    public static ConnectionPool getInstance() {
+    public static ConnectionWrapper getInstance() {
         if (instance == null) {
-            instance = new ConnectionPool();
+            instance = new ConnectionWrapper();
         }
         return instance;
     }
