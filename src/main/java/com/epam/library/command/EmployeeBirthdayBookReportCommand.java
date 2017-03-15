@@ -1,6 +1,6 @@
 package com.epam.library.command;
 
-import com.epam.library.entity.Employee;
+import com.epam.library.domain.Employee;
 import com.epam.library.exception.ServiceException;
 import com.epam.library.service.EmployeeService;
 import org.apache.logging.log4j.Level;

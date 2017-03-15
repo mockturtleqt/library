@@ -1,6 +1,6 @@
 package com.epam.library.dao;
 
-import com.epam.library.entity.Entity;
+import com.epam.library.domain.Entity;
 import com.epam.library.exception.DAOException;
 
 import java.sql.Connection;

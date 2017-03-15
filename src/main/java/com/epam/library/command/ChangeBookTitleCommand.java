@@ -1,6 +1,6 @@
 package com.epam.library.command;
 
-import com.epam.library.entity.Book;
+import com.epam.library.domain.Book;
 import com.epam.library.exception.ServiceException;
 import com.epam.library.service.BookService;
 import org.apache.logging.log4j.Level;

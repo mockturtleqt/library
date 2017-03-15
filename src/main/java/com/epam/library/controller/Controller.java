@@ -25,10 +25,11 @@ public class Controller {
                     break;
                 }
                 System.out.println("Would you like to continue? (yes/no)");
-                if (!"yes".equalsIgnoreCase(scanner.next())) {
-                    break;
-                } else {
+                if ("yes".equalsIgnoreCase(scanner.next())) {
                     printMenu();
+                } else {
+                    System.out.println(new ExitCommand().execute());
+                    break;
                 }
             }
         } finally {

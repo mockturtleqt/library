@@ -1,4 +1,4 @@
-package com.epam.library.entity;
+package com.epam.library.domain;
 
 public class Book extends Entity {
     private int id;
@@ -47,16 +47,16 @@ public class Book extends Entity {
 
         if (id != book.id) return false;
         if (year != book.year) return false;
-        if (author != book.author) return false;
-        return title.equals(book.title);
+        if (title != null ? !title.equals(book.title) : book.title != null) return false;
+        return author != null ? author.equals(book.author) : book.author == null;
     }
 
     @Override
     public int hashCode() {
         int result = id;
-        result = 31 * result + title.hashCode();
+        result = 31 * result + (title != null ? title.hashCode() : 0);
         result = 31 * result + year;
-        result = 31 * result + author.hashCode();
+        result = 31 * result + (author != null ? author.hashCode() : 0);
         return result;
     }
 

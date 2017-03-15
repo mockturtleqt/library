@@ -2,7 +2,7 @@ package com.epam.library.service;
 
 import com.epam.library.dao.BookDAO;
 import com.epam.library.database.ConnectionWrapper;
-import com.epam.library.entity.Book;
+import com.epam.library.domain.Book;
 import com.epam.library.exception.DAOException;
 import com.epam.library.exception.ServiceException;
 

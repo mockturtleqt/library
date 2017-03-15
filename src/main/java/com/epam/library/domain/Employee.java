@@ -1,4 +1,4 @@
-package com.epam.library.entity;
+package com.epam.library.domain;
 
 import java.time.LocalDate;
 
@@ -57,7 +57,8 @@ public class Employee extends Entity {
         Employee employee = (Employee) o;
 
         if (id != employee.id) return false;
-        if (!name.equals(employee.name)) return false;
+        if (numberOfBooks != employee.numberOfBooks) return false;
+        if (name != null ? !name.equals(employee.name) : employee.name != null) return false;
         if (birthday != null ? !birthday.equals(employee.birthday) : employee.birthday != null) return false;
         return email != null ? email.equals(employee.email) : employee.email == null;
     }
@@ -65,9 +66,10 @@ public class Employee extends Entity {
     @Override
     public int hashCode() {
         int result = id;
-        result = 31 * result + name.hashCode();
+        result = 31 * result + (name != null ? name.hashCode() : 0);
         result = 31 * result + (birthday != null ? birthday.hashCode() : 0);
         result = 31 * result + (email != null ? email.hashCode() : 0);
+        result = 31 * result + numberOfBooks;
         return result;
     }
 

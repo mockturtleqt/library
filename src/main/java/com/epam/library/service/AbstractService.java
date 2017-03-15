@@ -1,6 +1,6 @@
 package com.epam.library.service;
 
-import com.epam.library.entity.Entity;
+import com.epam.library.domain.Entity;
 import com.epam.library.exception.ServiceException;
 
 public abstract class AbstractService<T extends Entity> {
