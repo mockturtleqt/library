@@ -51,6 +51,7 @@ public class Book extends Entity {
         return author != null ? author.equals(book.author) : book.author == null;
     }
 
+
     @Override
     public int hashCode() {
         int result = id;
