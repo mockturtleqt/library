@@ -1,6 +1,7 @@
 package com.epam.library.controller;
 
 import com.epam.library.command.Command;
+import com.epam.library.command.ExitCommand;
 import com.epam.library.database.ConnectionPool;
 import com.epam.library.factory.ActionFactory;
 
@@ -16,19 +17,18 @@ public class Controller {
         try {
             while (scanner.hasNext()) {
                 String userCommand = scanner.next();
-                if (!"exit".equalsIgnoreCase(userCommand)) {
-                    Command command = new ActionFactory().defineCommand(userCommand);
+                Command command = new ActionFactory().defineCommand(userCommand);
 
-                    System.out.println(command.execute());
+                System.out.println(command.execute());
 
-                    System.out.println("Would you like to continue? (yes/no)");
-                    if (!"yes".equalsIgnoreCase(scanner.next())) {
-                        break;
-                    } else {
-                        printMenu();
-                    }
-                } else {
+                if (command instanceof ExitCommand) {
                     break;
+                }
+                System.out.println("Would you like to continue? (yes/no)");
+                if (!"yes".equalsIgnoreCase(scanner.next())) {
+                    break;
+                } else {
+                    printMenu();
                 }
             }
         } finally {

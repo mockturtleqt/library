@@ -16,6 +16,11 @@ public enum CommandEnum {
         {
             command = new ChangeBookTitleCommand();
         }
+    },
+    EXIT {
+        {
+            command = new ExitCommand();
+        }
     };
     Command command;
 
