@@ -1,37 +1,43 @@
 package com.epam.library.controller;
 
 import com.epam.library.command.Command;
-import com.epam.library.command.CommandEnum;
-import com.epam.library.command.EmptyCommand;
-import org.apache.logging.log4j.Level;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import com.epam.library.database.ConnectionPool;
+import com.epam.library.factory.ActionFactory;
 
 import java.util.Scanner;
 
 public class Controller {
-    private static Logger logger = LogManager.getLogger();
+
 
     public static void main(String[] args) {
         System.out.println("Welcome to our library!");
-        System.out.println("Type `EMPLOYEE_REPORT_1` to view report on employees who've read 1+ books.");
-        System.out.println("Type `EMPLOYEE_REPORT_2` to view report on employees who've read 2+ books.");
-        System.out.println("Type `CHANGE_BOOK_TITLE` to rename a book.");
-//        System.out.println("Press 4 if you want to exit");
-//        TODO close connection on exit
+        printMenu();
         Scanner scanner = new Scanner(System.in);
+        String userCommand = null;
 
-        String userCommand = scanner.next();
-        Command command = new EmptyCommand();
+        try {
+            while (scanner.hasNext() && !"exit".equalsIgnoreCase(userCommand)) {
+                userCommand = scanner.next();
+                Command command = new ActionFactory().defineCommand(userCommand);
 
-        if (!userCommand.isEmpty()) {
-            try {
-                command = CommandEnum.valueOf(userCommand.toUpperCase()).getCurrentCommand();
-            } catch (IllegalArgumentException e) {
-                logger.log(Level.ERROR, e);
+                System.out.println(command.execute());
+                System.out.println("Would you like to continue? (yes/no)");
+                if (!"yes".equalsIgnoreCase(scanner.next())) {
+                    break;
+                } else {
+                    printMenu();
+                }
             }
-
+        } finally {
+            ConnectionPool.getInstance().closeConnection();
         }
-        System.out.println(command.execute());
+
+    }
+
+    private static void printMenu() {
+        System.out.println("Type `REPORT_1` to view report on employees who've read 1+ books.");
+        System.out.println("Type `REPORT_2` to view report on employees who've read 2+ books.");
+        System.out.println("Type `CHANGE_BOOK_TITLE` to rename a book.");
+        System.out.println("Type `EXIT` to exit");
     }
 }

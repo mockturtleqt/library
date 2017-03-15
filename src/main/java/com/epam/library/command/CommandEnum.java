@@ -2,12 +2,12 @@ package com.epam.library.command;
 
 public enum CommandEnum {
 
-    EMPLOYEE_REPORT_1 {
+    REPORT_1 {
         {
             command = new EmployeeReport1Command();
         }
     },
-    EMPLOYEE_REPORT_2 {
+    REPORT_2 {
         {
             command = new EmployeeReport2Command();
         }
