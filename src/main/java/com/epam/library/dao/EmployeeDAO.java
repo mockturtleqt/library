@@ -36,7 +36,7 @@ public class EmployeeDAO extends AbstractDAO<Employee> {
 
     }
 
-    public List<Employee> findEmployeeBookStatistics() throws DAOException {
+    public List<Employee> findEmployeeBookInfo() throws DAOException {
         List<Employee> employeeList = new ArrayList<>();
         try (Statement statement = connection.createStatement()) {
             ResultSet resultSet = statement.executeQuery(SQL_SELECT_EMPLOYEE_BOOK_STATISTICS);
@@ -49,7 +49,7 @@ public class EmployeeDAO extends AbstractDAO<Employee> {
         }
     }
 
-    public List<Employee> findEmployeeBirthdayBookStatistics() throws DAOException {
+    public List<Employee> findEmployeeBirthdayBookInfo() throws DAOException {
         List<Employee> employeeList = new ArrayList<>();
         try (Statement statement = connection.createStatement()) {
             ResultSet resultSet = statement.executeQuery(SQL_SELECT_EMPLOYEE_BIRTHDAY_BOOK_STATISTICS);

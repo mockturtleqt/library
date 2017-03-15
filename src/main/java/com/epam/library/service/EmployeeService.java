@@ -27,17 +27,17 @@ public class EmployeeService extends AbstractService<Employee> {
 
     }
 
-    public List<Employee> findEmployeeBookStatistics() throws ServiceException {
+    public List<Employee> findEmployeeBookInfo() throws ServiceException {
         try {
-            return employeeDAO.findEmployeeBookStatistics();
+            return employeeDAO.findEmployeeBookInfo();
         } catch (DAOException e) {
             throw new ServiceException(e);
         }
     }
 
-    public List<Employee> findEmployeeBirthdayBookStatistics() throws ServiceException {
+    public List<Employee> findEmployeeBirthdayBookInfo() throws ServiceException {
         try {
-            return employeeDAO.findEmployeeBirthdayBookStatistics();
+            return employeeDAO.findEmployeeBirthdayBookInfo();
         } catch (DAOException e) {
             throw new ServiceException(e);
         }

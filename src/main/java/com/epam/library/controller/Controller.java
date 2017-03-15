@@ -8,30 +8,32 @@ import java.util.Scanner;
 
 public class Controller {
 
-
     public static void main(String[] args) {
         System.out.println("Welcome to our library!");
         printMenu();
         Scanner scanner = new Scanner(System.in);
-        String userCommand = null;
 
         try {
-            while (scanner.hasNext() && !"exit".equalsIgnoreCase(userCommand)) {
-                userCommand = scanner.next();
-                Command command = new ActionFactory().defineCommand(userCommand);
+            while (scanner.hasNext()) {
+                String userCommand = scanner.next();
+                if (!"exit".equalsIgnoreCase(userCommand)) {
+                    Command command = new ActionFactory().defineCommand(userCommand);
 
-                System.out.println(command.execute());
-                System.out.println("Would you like to continue? (yes/no)");
-                if (!"yes".equalsIgnoreCase(scanner.next())) {
-                    break;
+                    System.out.println(command.execute());
+
+                    System.out.println("Would you like to continue? (yes/no)");
+                    if (!"yes".equalsIgnoreCase(scanner.next())) {
+                        break;
+                    } else {
+                        printMenu();
+                    }
                 } else {
-                    printMenu();
+                    break;
                 }
             }
         } finally {
             ConnectionPool.getInstance().closeConnection();
         }
-
     }
 
     private static void printMenu() {

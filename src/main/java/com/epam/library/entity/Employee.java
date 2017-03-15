@@ -78,11 +78,11 @@ public class Employee extends Entity {
                 '}';
     }
 
-    public String report1() {
+    public String getNameAndBookNumber() {
         return name + ": " + numberOfBooks;
     }
 
-    public String report2() {
+    public String getNameBirthdayAndBookNumber() {
         return name + ", " + birthday + " : " + numberOfBooks;
     }
 }

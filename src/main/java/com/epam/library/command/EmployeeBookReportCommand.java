@@ -12,18 +12,21 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 
-public class EmployeeReport1Command implements Command {
+public class EmployeeBookReportCommand implements Command {
     private static final Logger logger = LogManager.getLogger();
 
     public String execute() {
         EmployeeService employeeService = new EmployeeService();
         List<Employee> employeeList = new ArrayList<>();
         try {
-            employeeList = employeeService.findEmployeeBookStatistics();
+            employeeList = employeeService.findEmployeeBookInfo();
 
         } catch (ServiceException e) {
             logger.log(Level.ERROR, e);
         }
-        return employeeList.stream().map(Employee::report1).collect(Collectors.joining("\n"));
+        return employeeList
+                .stream()
+                .map(Employee::getNameAndBookNumber)
+                .collect(Collectors.joining("\n"));
     }
 }

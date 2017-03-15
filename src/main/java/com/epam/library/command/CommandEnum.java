@@ -4,12 +4,12 @@ public enum CommandEnum {
 
     REPORT_1 {
         {
-            command = new EmployeeReport1Command();
+            command = new EmployeeBookReportCommand();
         }
     },
     REPORT_2 {
         {
-            command = new EmployeeReport2Command();
+            command = new EmployeeBirthdayBookReportCommand();
         }
     },
     CHANGE_BOOK_TITLE {

@@ -11,18 +11,21 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class EmployeeReport2Command implements Command {
+public class EmployeeBirthdayBookReportCommand implements Command {
     private static final Logger logger = LogManager.getLogger();
 
     public String execute() {
         EmployeeService employeeService = new EmployeeService();
         List<Employee> employeeList = new ArrayList<>();
         try {
-            employeeList = employeeService.findEmployeeBirthdayBookStatistics();
+            employeeList = employeeService.findEmployeeBirthdayBookInfo();
 
         } catch (ServiceException e) {
             logger.log(Level.ERROR, e);
         }
-        return employeeList.stream().map(Employee::report2).collect(Collectors.joining("\n"));
+        return employeeList
+                .stream()
+                .map(Employee::getNameBirthdayAndBookNumber)
+                .collect(Collectors.joining("\n"));
     }
 }
