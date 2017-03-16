@@ -13,10 +13,11 @@ public class FindBookByIdCommand implements Command {
 
     public String execute() {
         Book book = new Book();
-        try {
-            Scanner scanner = new Scanner(System.in);
+        try (Scanner scanner = new Scanner(System.in)) {
+
             System.out.println("Book ID:");
             String id = scanner.nextLine();
+
             if (id.matches("\\d+")) {
                 book = new BookService().findById(Integer.parseInt(id));
             } else {

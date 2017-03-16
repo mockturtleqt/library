@@ -13,8 +13,8 @@ public class FindBookByTitleCommand implements Command {
 
     public String execute() {
         Book book = new Book();
-        try {
-            Scanner scanner = new Scanner(System.in);
+        try (Scanner scanner = new Scanner(System.in)) {
+
             System.out.println("Book title: ");
             book = new BookService().findByTitle(scanner.nextLine());
         } catch (ServiceException e) {

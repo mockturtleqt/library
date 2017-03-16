@@ -13,23 +13,27 @@ public class CreateBookCommand implements Command {
 
     public String execute() {
         Book book = new Book();
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Title: ");
-        book.setTitle(scanner.nextLine());
-        System.out.println("Publication year: ");
-        String year = scanner.nextLine();
-        if (year.matches("\\d+")) {
-            book.setYear(Integer.parseInt(year));
-        }
 
-        System.out.println("Author: ");
-        book.setAuthor(scanner.nextLine());
+        try (Scanner scanner = new Scanner(System.in)) {
 
-        try {
+            System.out.println("Title: ");
+            book.setTitle(scanner.nextLine());
+
+            System.out.println("Publication year: ");
+            String year = scanner.nextLine();
+            if (year.matches("\\d+")) {
+                book.setYear(Integer.parseInt(year));
+            }
+
+            System.out.println("Author: ");
+            book.setAuthor(scanner.nextLine());
+
             new BookService().create(book);
+
         } catch (ServiceException e) {
             logger.error(e);
         }
+
         return book.toString();
     }
 }

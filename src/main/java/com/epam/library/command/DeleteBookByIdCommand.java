@@ -11,15 +11,17 @@ public class DeleteBookByIdCommand implements Command {
     private static final Logger logger = LogManager.getLogger();
 
     public String execute() {
-        try {
-            Scanner scanner = new Scanner(System.in);
+        try (Scanner scanner = new Scanner(System.in)) {
+
             System.out.println("Book ID:");
             String id = scanner.nextLine();
+
             if (id.matches("\\d+")) {
                 new BookService().deleteById(Integer.parseInt(id));
             } else {
                 logger.error("Wrong ID.");
             }
+
         } catch (ServiceException e) {
             logger.error(e);
         }
