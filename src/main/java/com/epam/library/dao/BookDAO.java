@@ -4,13 +4,15 @@ import com.epam.library.domain.Book;
 import com.epam.library.exception.DAOException;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 import static com.epam.library.database.query.SQLBookQuery.*;
 
 public class BookDAO extends AbstractDAO<Book> {
     private static final String ID = "id";
     private static final String TITLE = "title";
-    private static final String PUBLISH_YEAR = "publish_year";
+    private static final String PUBLICATION_YEAR = "publish_year";
     private static final String AUTHOR = "author";
 
     public BookDAO(Connection connection) {
@@ -84,11 +86,24 @@ public class BookDAO extends AbstractDAO<Book> {
         }
     }
 
+    public List<Book> findAll() throws DAOException {
+        List<Book> books = new ArrayList<>();
+        try (Statement statement = connection.createStatement()) {
+            ResultSet resultSet = statement.executeQuery(SQL_SELECT_ALL_BOOKS);
+            while (resultSet.next()) {
+                books.add(createBookFromResultSet(resultSet));
+            }
+        } catch (SQLException e) {
+            throw new DAOException(e);
+        }
+        return books;
+    }
+
     private Book createBookFromResultSet(ResultSet resultSet) throws SQLException {
         Book book = new Book();
         book.setId(resultSet.getInt(ID));
         book.setTitle(resultSet.getString(TITLE));
-        book.setYear(resultSet.getInt(PUBLISH_YEAR));
+        book.setYear(resultSet.getInt(PUBLICATION_YEAR));
         book.setAuthor(resultSet.getString(AUTHOR));
         return book;
     }

@@ -3,7 +3,6 @@ package com.epam.library.command;
 import com.epam.library.domain.Employee;
 import com.epam.library.exception.ServiceException;
 import com.epam.library.service.EmployeeService;
-import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -16,13 +15,12 @@ public class EmployeeBookReportCommand implements Command {
     private static final Logger logger = LogManager.getLogger();
 
     public String execute() {
-        EmployeeService employeeService = new EmployeeService();
         List<Employee> employeeList = new ArrayList<>();
         try {
-            employeeList = employeeService.findEmployeeBookInfo();
+            employeeList = new EmployeeService().findEmployeeBookInfo();
 
         } catch (ServiceException e) {
-            logger.log(Level.ERROR, e);
+            logger.error(e);
         }
         return employeeList
                 .stream()

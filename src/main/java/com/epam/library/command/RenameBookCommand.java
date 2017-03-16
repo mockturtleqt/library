@@ -3,28 +3,34 @@ package com.epam.library.command;
 import com.epam.library.domain.Book;
 import com.epam.library.exception.ServiceException;
 import com.epam.library.service.BookService;
-import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.util.Scanner;
 
-public class ChangeBookTitleCommand implements Command {
+public class RenameBookCommand implements Command {
     private static final Logger logger = LogManager.getLogger();
 
     public String execute() {
         Book book = new Book();
         try {
-            BookService bookService = new BookService();
             Scanner scanner = new Scanner(System.in);
+
             System.out.println("Old book title: ");
-            String oldTitle = scanner.next();
+            String oldTitle = scanner.nextLine();
+
             System.out.println("New book title: ");
-            String newTitle = scanner.next();
-            book = bookService.updateTitle(oldTitle, newTitle);
+            String newTitle = scanner.nextLine();
+
+            book = new BookService().updateTitle(oldTitle, newTitle);
         } catch (ServiceException e) {
-            logger.log(Level.ERROR, e);
+            logger.error(e);
         }
-        return book.toString();
+
+        if (book != null) {
+            return book.toString();
+        } else {
+            return "Sorry, we don't have books with this title.";
+        }
     }
 }

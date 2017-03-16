@@ -40,7 +40,12 @@ public class Controller {
     private static void printMenu() {
         System.out.println("Type `REPORT_1` to view report on employees who've read 1+ books.");
         System.out.println("Type `REPORT_2` to view report on employees who've read 2+ books.");
-        System.out.println("Type `CHANGE_BOOK_TITLE` to rename a book.");
-        System.out.println("Type `EXIT` to exit");
+        System.out.println("Type `RENAME_BOOK` to rename a book.");
+        System.out.println("Type `CREATE_BOOK` to create a book.");
+        System.out.println("Type `FIND_BOOK_BY_TITLE` to find a book by its title.");
+        System.out.println("Type `FIND_BOOK_BY_ID` to find a book by its ID.");
+        System.out.println("Type `FIND_ALL_BOOKS` to view all books in our library.");
+        System.out.println("Type `DELETE_BOOK` to delete a book by its ID.");
+        System.out.println("Type `EXIT` to exit.");
     }
 }

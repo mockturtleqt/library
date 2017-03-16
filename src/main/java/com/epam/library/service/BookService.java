@@ -6,6 +6,8 @@ import com.epam.library.domain.Book;
 import com.epam.library.exception.DAOException;
 import com.epam.library.exception.ServiceException;
 
+import java.util.List;
+
 public class BookService extends AbstractService<Book> {
     private BookDAO bookDAO = new BookDAO(ConnectionWrapper.getInstance().getConnection());
 
@@ -13,19 +15,23 @@ public class BookService extends AbstractService<Book> {
         try {
             return bookDAO.create(book);
         } catch (DAOException e) {
-            throw new ServiceException(e);
+            throw new ServiceException("Cannot create this book.", e);
         }
     }
 
     public Book findById(int id) throws ServiceException {
-        return null;
+        try {
+            return bookDAO.findById(id);
+        } catch (DAOException e) {
+            throw new ServiceException("Cannot find this book.", e);
+        }
     }
 
     public Book update(Book book) throws ServiceException {
         try {
             return bookDAO.update(book);
         } catch (DAOException e) {
-            throw new ServiceException(e);
+            throw new ServiceException("Cannot update this book.", e);
         }
     }
 
@@ -45,6 +51,26 @@ public class BookService extends AbstractService<Book> {
     }
 
     public void deleteById(int id) throws ServiceException {
+        try {
+            bookDAO.deleteById(id);
+        } catch (DAOException e) {
+            throw new ServiceException("Cannot delete this book.", e);
+        }
+    }
 
+    public Book findByTitle(String title) throws ServiceException {
+        try {
+            return bookDAO.findByTitle(title);
+        } catch (DAOException e) {
+            throw new ServiceException(e);
+        }
+    }
+
+    public List<Book> findAll() throws ServiceException {
+        try {
+            return bookDAO.findAll();
+        } catch (DAOException e) {
+            throw new ServiceException(e);
+        }
     }
 }

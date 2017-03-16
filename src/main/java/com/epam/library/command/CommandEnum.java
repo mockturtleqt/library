@@ -12,9 +12,34 @@ public enum CommandEnum {
             command = new EmployeeBirthdayBookReportCommand();
         }
     },
-    CHANGE_BOOK_TITLE {
+    RENAME_BOOK {
         {
-            command = new ChangeBookTitleCommand();
+            command = new RenameBookCommand();
+        }
+    },
+    CREATE_BOOK {
+        {
+            command = new CreateBookCommand();
+        }
+    },
+    FIND_BOOK_BY_TITLE {
+        {
+            command = new FindBookByTitleCommand();
+        }
+    },
+    FIND_BOOK_BY_ID {
+        {
+            command = new FindBookByIdCommand();
+        }
+    },
+    FIND_ALL_BOOKS {
+        {
+            command = new FindAllBooksCommand();
+        }
+    },
+    DELETE_BOOK {
+        {
+            command = new DeleteBookByIdCommand();
         }
     },
     EXIT {

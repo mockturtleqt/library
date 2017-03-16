@@ -8,6 +8,11 @@ public class SQLBookQuery {
             "WHERE\n" +
             "    `id` = ?";
 
+    public static final String SQL_SELECT_ALL_BOOKS = "SELECT \n" +
+            "    `id`, `title`, `publish_year`, `author`\n" +
+            "FROM\n" +
+            "    book\n";
+
     public static final String SQL_SELECT_BOOK_BY_TITLE = "SELECT \n" +
             "    `id`, `title`, `publish_year`, `author`\n" +
             "FROM\n" +
