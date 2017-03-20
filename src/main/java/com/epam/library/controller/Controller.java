@@ -3,7 +3,7 @@ package com.epam.library.controller;
 import com.epam.library.command.Command;
 import com.epam.library.command.factory.ActionFactory;
 import com.epam.library.command.impl.ExitCommand;
-import com.epam.library.database.ConnectionWrapper;
+import com.epam.library.util.database.ConnectionWrapper;
 
 import java.util.Scanner;
 

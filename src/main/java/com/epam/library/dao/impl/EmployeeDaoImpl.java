@@ -9,8 +9,8 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.epam.library.database.query.SQLEmployeeQuery.SQL_SELECT_EMPLOYEE_BIRTHDAY_BOOK_STATISTICS;
-import static com.epam.library.database.query.SQLEmployeeQuery.SQL_SELECT_EMPLOYEE_BOOK_STATISTICS;
+import static com.epam.library.util.database.query.SQLEmployeeQuery.SQL_SELECT_EMPLOYEE_BIRTHDAY_BOOK_STATISTICS;
+import static com.epam.library.util.database.query.SQLEmployeeQuery.SQL_SELECT_EMPLOYEE_BOOK_STATISTICS;
 
 public class EmployeeDaoImpl extends EmployeeDao {
     private static final String NAME = "name";

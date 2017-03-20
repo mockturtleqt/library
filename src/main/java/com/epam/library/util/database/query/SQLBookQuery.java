@@ -1,4 +1,4 @@
-package com.epam.library.database.query;
+package com.epam.library.util.database.query;
 
 public class SQLBookQuery {
     public static final String SQL_SELECT_BOOK_BY_ID = "SELECT \n" +

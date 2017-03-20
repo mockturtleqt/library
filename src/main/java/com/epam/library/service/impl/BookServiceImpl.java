@@ -6,12 +6,14 @@ import com.epam.library.dao.factory.DaoFactory;
 import com.epam.library.domain.Book;
 import com.epam.library.service.BookService;
 import com.epam.library.service.exception.ServiceException;
+import com.epam.library.util.validation.ServiceValidator;
 
 import java.util.List;
 
 public class BookServiceImpl extends BookService {
     public Book create(Book book) throws ServiceException {
         try {
+            new ServiceValidator().validateBook(book);
             return DaoFactory.getInstance().getBookDao().create(book);
         } catch (DaoException e) {
             throw new ServiceException("Cannot create this book.", e);
@@ -28,6 +30,7 @@ public class BookServiceImpl extends BookService {
 
     public Book update(Book book) throws ServiceException {
         try {
+            new ServiceValidator().validateBook(book);
             return DaoFactory.getInstance().getBookDao().update(book);
         } catch (DaoException e) {
             throw new ServiceException("Cannot update this book.", e);

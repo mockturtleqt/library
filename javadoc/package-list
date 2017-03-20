@@ -1,8 +1,8 @@
 com.epam.library.command
 com.epam.library.controller
 com.epam.library.dao
-com.epam.library.database
-com.epam.library.database.query
+com.epam.library.util.database
+com.epam.library.util.database.query
 com.epam.library.domain
 com.epam.library.exception
 com.epam.library.factory

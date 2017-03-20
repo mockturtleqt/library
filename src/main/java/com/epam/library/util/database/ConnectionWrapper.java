@@ -1,4 +1,4 @@
-package com.epam.library.database;
+package com.epam.library.util.database;
 
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;

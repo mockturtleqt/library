@@ -4,7 +4,7 @@ import com.epam.library.dao.BookDao;
 import com.epam.library.dao.EmployeeDao;
 import com.epam.library.dao.impl.BookDaoImpl;
 import com.epam.library.dao.impl.EmployeeDaoImpl;
-import com.epam.library.database.ConnectionWrapper;
+import com.epam.library.util.database.ConnectionWrapper;
 
 import java.sql.Connection;
 

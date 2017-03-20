@@ -8,7 +8,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.epam.library.database.query.SQLBookQuery.*;
+import static com.epam.library.util.database.query.SQLBookQuery.*;
 
 public class BookDaoImpl extends BookDao {
     private static final String ID = "id";
