@@ -1,8 +1,9 @@
-package com.epam.library.command;
+package com.epam.library.command.impl.book;
 
+import com.epam.library.command.Command;
 import com.epam.library.domain.Book;
-import com.epam.library.exception.ServiceException;
-import com.epam.library.service.BookService;
+import com.epam.library.service.exception.ServiceException;
+import com.epam.library.service.factory.ServiceFactory;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -28,7 +29,7 @@ public class CreateBookCommand implements Command {
             System.out.println("Author: ");
             book.setAuthor(scanner.nextLine());
 
-            new BookService().create(book);
+            ServiceFactory.getInstance().getBookService().create(book);
 
         } catch (ServiceException e) {
             logger.error(e);

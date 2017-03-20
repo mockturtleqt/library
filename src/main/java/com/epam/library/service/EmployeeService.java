@@ -1,45 +1,21 @@
 package com.epam.library.service;
 
-import com.epam.library.dao.EmployeeDAO;
-import com.epam.library.database.ConnectionWrapper;
 import com.epam.library.domain.Employee;
-import com.epam.library.exception.DAOException;
-import com.epam.library.exception.ServiceException;
+import com.epam.library.service.exception.ServiceException;
 
 import java.util.List;
 
-public class EmployeeService extends AbstractService<Employee> {
-    private EmployeeDAO employeeDAO = new EmployeeDAO(ConnectionWrapper.getInstance().getConnection());
+public abstract class EmployeeService {
 
-    public Employee create(Employee employee) throws ServiceException {
-        return null;
-    }
+    public abstract Employee create(Employee employee) throws ServiceException;
 
-    public Employee findById(int id) throws ServiceException {
-        return null;
-    }
+    public abstract Employee findById(int id) throws ServiceException;
 
-    public Employee update(Employee employee) throws ServiceException {
-        return null;
-    }
+    public abstract Employee update(Employee employee) throws ServiceException;
 
-    public void deleteById(int id) throws ServiceException {
+    public abstract void deleteById(int id) throws ServiceException;
 
-    }
+    public abstract List<Employee> findEmployeeBookInfo() throws ServiceException;
 
-    public List<Employee> findEmployeeBookInfo() throws ServiceException {
-        try {
-            return employeeDAO.findEmployeeBookInfo();
-        } catch (DAOException e) {
-            throw new ServiceException(e);
-        }
-    }
-
-    public List<Employee> findEmployeeBirthdayBookInfo() throws ServiceException {
-        try {
-            return employeeDAO.findEmployeeBirthdayBookInfo();
-        } catch (DAOException e) {
-            throw new ServiceException(e);
-        }
-    }
+    public abstract List<Employee> findEmployeeBirthdayBookInfo() throws ServiceException;
 }

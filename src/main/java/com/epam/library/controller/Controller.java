@@ -1,9 +1,9 @@
 package com.epam.library.controller;
 
 import com.epam.library.command.Command;
-import com.epam.library.command.ExitCommand;
+import com.epam.library.command.factory.ActionFactory;
+import com.epam.library.command.impl.ExitCommand;
 import com.epam.library.database.ConnectionWrapper;
-import com.epam.library.factory.ActionFactory;
 
 import java.util.Scanner;
 
@@ -17,13 +17,10 @@ public class Controller {
         try {
             while (scanner.hasNext()) {
                 String userCommand = scanner.next();
-                Command command = new ActionFactory().defineCommand(userCommand);
+                Command command = ActionFactory.getInstance().defineCommand(userCommand);
 
                 System.out.println(command.execute());
 
-                if (command instanceof ExitCommand) {
-                    break;
-                }
                 System.out.println("Would you like to continue? (yes/no)");
                 if ("yes".equalsIgnoreCase(scanner.next())) {
                     printMenu();
@@ -46,6 +43,5 @@ public class Controller {
         System.out.println("Type `FIND_BOOK_BY_ID` to find a book by its ID.");
         System.out.println("Type `FIND_ALL_BOOKS` to view all books in our library.");
         System.out.println("Type `DELETE_BOOK` to delete a book by its ID.");
-        System.out.println("Type `EXIT` to exit.");
     }
 }

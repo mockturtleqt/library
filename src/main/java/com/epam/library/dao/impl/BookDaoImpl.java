@@ -1,7 +1,8 @@
-package com.epam.library.dao;
+package com.epam.library.dao.impl;
 
+import com.epam.library.dao.BookDao;
+import com.epam.library.dao.exception.DaoException;
 import com.epam.library.domain.Book;
-import com.epam.library.exception.DAOException;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -9,17 +10,17 @@ import java.util.List;
 
 import static com.epam.library.database.query.SQLBookQuery.*;
 
-public class BookDAO extends AbstractDAO<Book> {
+public class BookDaoImpl extends BookDao {
     private static final String ID = "id";
     private static final String TITLE = "title";
     private static final String PUBLICATION_YEAR = "publish_year";
     private static final String AUTHOR = "author";
 
-    public BookDAO(Connection connection) {
+    public BookDaoImpl(Connection connection) {
         super(connection);
     }
 
-    public Book create(Book book) throws DAOException {
+    public Book create(Book book) throws DaoException {
         try (PreparedStatement preparedStatement = connection.prepareStatement(SQL_INSERT_BOOK, Statement.RETURN_GENERATED_KEYS)) {
             preparedStatement.setString(1, book.getTitle());
             preparedStatement.setInt(2, book.getYear());
@@ -33,11 +34,11 @@ public class BookDAO extends AbstractDAO<Book> {
             }
             return book;
         } catch (SQLException e) {
-            throw new DAOException(e);
+            throw new DaoException(e);
         }
     }
 
-    public Book findById(int id) throws DAOException {
+    public Book findById(int id) throws DaoException {
         Book book = null;
         try (PreparedStatement preparedStatement = connection.prepareStatement(SQL_SELECT_BOOK_BY_ID)) {
             preparedStatement.setInt(1, id);
@@ -47,32 +48,32 @@ public class BookDAO extends AbstractDAO<Book> {
             }
             return book;
         } catch (SQLException e) {
-            throw new DAOException(e);
+            throw new DaoException(e);
         }
     }
 
-    public Book update(Book book) throws DAOException {
+    public Book update(Book book) throws DaoException {
         try (PreparedStatement preparedStatement = connection.prepareStatement(SQL_UPDATE_BOOK)) {
             preparedStatement.setString(1, book.getTitle());
             preparedStatement.setInt(2, book.getId());
             preparedStatement.executeUpdate();
             return book;
         } catch (SQLException e) {
-            throw new DAOException(e);
+            throw new DaoException(e);
         }
     }
 
-    public void deleteById(int id) throws DAOException {
+    public void deleteById(int id) throws DaoException {
         try (PreparedStatement preparedStatement = connection.prepareStatement(SQL_DELETE_BOOK)) {
             preparedStatement.setInt(1, id);
             preparedStatement.executeUpdate();
 
         } catch (SQLException e) {
-            throw new DAOException(e);
+            throw new DaoException(e);
         }
     }
 
-    public Book findByTitle(String title) throws DAOException {
+    public Book findByTitle(String title) throws DaoException {
         Book book = null;
         try (PreparedStatement preparedStatement = connection.prepareStatement(SQL_SELECT_BOOK_BY_TITLE)) {
             preparedStatement.setString(1, title);
@@ -82,11 +83,11 @@ public class BookDAO extends AbstractDAO<Book> {
             }
             return book;
         } catch (SQLException e) {
-            throw new DAOException(e);
+            throw new DaoException(e);
         }
     }
 
-    public List<Book> findAll() throws DAOException {
+    public List<Book> findAll() throws DaoException {
         List<Book> books = new ArrayList<>();
         try (Statement statement = connection.createStatement()) {
             ResultSet resultSet = statement.executeQuery(SQL_SELECT_ALL_BOOKS);
@@ -94,7 +95,7 @@ public class BookDAO extends AbstractDAO<Book> {
                 books.add(createBookFromResultSet(resultSet));
             }
         } catch (SQLException e) {
-            throw new DAOException(e);
+            throw new DaoException(e);
         }
         return books;
     }

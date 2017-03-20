@@ -12,7 +12,7 @@ import java.util.ResourceBundle;
 public class ConnectionWrapper {
     private static final Logger logger = LogManager.getLogger();
 
-    private static ConnectionWrapper instance;
+    private static final ConnectionWrapper INSTANCE = new ConnectionWrapper();
     private Connection connection;
 
     private static final String DATABASE = "db";
@@ -25,10 +25,7 @@ public class ConnectionWrapper {
     }
 
     public static ConnectionWrapper getInstance() {
-        if (instance == null) {
-            instance = new ConnectionWrapper();
-        }
-        return instance;
+        return INSTANCE;
     }
 
     public Connection getConnection() {

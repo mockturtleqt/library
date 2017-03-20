@@ -1,5 +1,10 @@
 package com.epam.library.command;
 
+import com.epam.library.command.impl.ExitCommand;
+import com.epam.library.command.impl.book.*;
+import com.epam.library.command.impl.employee.EmployeeBirthdayBookReportCommand;
+import com.epam.library.command.impl.employee.EmployeeBookReportCommand;
+
 public enum CommandEnum {
 
     REPORT_1 {
