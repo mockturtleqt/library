@@ -1,7 +1,7 @@
 package com.epam.library.dao.impl;
 
-import com.epam.library.dao.BookDao;
 import com.epam.library.dao.exception.DaoException;
+import com.epam.library.dao.sql.SqlBookDao;
 import com.epam.library.domain.Book;
 
 import java.sql.*;
@@ -10,7 +10,7 @@ import java.util.List;
 
 import static com.epam.library.util.database.query.SQLBookQuery.*;
 
-public class BookDaoImpl extends BookDao {
+public class BookDaoImpl extends SqlBookDao {
     private static final String ID = "id";
     private static final String TITLE = "title";
     private static final String PUBLICATION_YEAR = "publish_year";

@@ -10,7 +10,7 @@ import com.epam.library.util.validation.ServiceValidator;
 
 import java.util.List;
 
-public class BookServiceImpl extends BookService {
+public class BookServiceImpl implements BookService {
     public Book create(Book book) throws ServiceException {
         try {
             new ServiceValidator().validateBook(book);

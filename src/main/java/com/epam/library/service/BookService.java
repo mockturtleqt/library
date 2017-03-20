@@ -5,19 +5,19 @@ import com.epam.library.service.exception.ServiceException;
 
 import java.util.List;
 
-public abstract class BookService {
+public interface BookService {
 
-    public abstract Book create(Book book) throws ServiceException;
+    Book create(Book book) throws ServiceException;
 
-    public abstract Book findById(int id) throws ServiceException;
+    Book findById(int id) throws ServiceException;
 
-    public abstract Book update(Book book) throws ServiceException;
+    Book update(Book book) throws ServiceException;
 
-    public abstract Book updateTitle(String oldTitle, String newTitle) throws ServiceException;
+    Book updateTitle(String oldTitle, String newTitle) throws ServiceException;
 
-    public abstract void deleteById(int id) throws ServiceException;
+    void deleteById(int id) throws ServiceException;
 
-    public abstract Book findByTitle(String title) throws ServiceException;
+    Book findByTitle(String title) throws ServiceException;
 
-    public abstract List<Book> findAll() throws ServiceException;
+    List<Book> findAll() throws ServiceException;
 }

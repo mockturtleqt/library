@@ -5,17 +5,16 @@ import com.epam.library.service.exception.ServiceException;
 
 import java.util.List;
 
-public abstract class EmployeeService {
+public interface EmployeeService {
+    Employee create(Employee employee) throws ServiceException;
 
-    public abstract Employee create(Employee employee) throws ServiceException;
+    Employee findById(int id) throws ServiceException;
 
-    public abstract Employee findById(int id) throws ServiceException;
+    Employee update(Employee employee) throws ServiceException;
 
-    public abstract Employee update(Employee employee) throws ServiceException;
+    void deleteById(int id) throws ServiceException;
 
-    public abstract void deleteById(int id) throws ServiceException;
+    List<Employee> findEmployeeBookInfo() throws ServiceException;
 
-    public abstract List<Employee> findEmployeeBookInfo() throws ServiceException;
-
-    public abstract List<Employee> findEmployeeBirthdayBookInfo() throws ServiceException;
+    List<Employee> findEmployeeBirthdayBookInfo() throws ServiceException;
 }

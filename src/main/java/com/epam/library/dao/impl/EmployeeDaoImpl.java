@@ -1,7 +1,7 @@
 package com.epam.library.dao.impl;
 
-import com.epam.library.dao.EmployeeDao;
 import com.epam.library.dao.exception.DaoException;
+import com.epam.library.dao.sql.SqlEmployeeDao;
 import com.epam.library.domain.Employee;
 
 import java.sql.*;
@@ -12,7 +12,7 @@ import java.util.List;
 import static com.epam.library.util.database.query.SQLEmployeeQuery.SQL_SELECT_EMPLOYEE_BIRTHDAY_BOOK_STATISTICS;
 import static com.epam.library.util.database.query.SQLEmployeeQuery.SQL_SELECT_EMPLOYEE_BOOK_STATISTICS;
 
-public class EmployeeDaoImpl extends EmployeeDao {
+public class EmployeeDaoImpl extends SqlEmployeeDao {
     private static final String NAME = "name";
     private static final String NUMBER_OF_BOOKS = "number_of_books";
     private static final String DATE_OF_BIRTH = "date_of_birth";

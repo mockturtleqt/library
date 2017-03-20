@@ -8,7 +8,7 @@ import com.epam.library.service.exception.ServiceException;
 
 import java.util.List;
 
-public class EmployeeServiceImpl extends EmployeeService {
+public class EmployeeServiceImpl implements EmployeeService {
     public Employee create(Employee employee) throws ServiceException {
         throw new UnsupportedOperationException();
     }
